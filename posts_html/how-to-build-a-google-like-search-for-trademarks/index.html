@@ -1,0 +1,114 @@
+<html lang='en'>
+<head>
+<meta charset='UTF-8'>
+<meta content='IE=edge' http-equiv='X-UA-Compatible'>
+<meta content='width=device-width, initial-scale=1.0' name='viewport'>
+<title>How to Build a Google-like Search for Trademarks</title>
+<link href='/style.css' rel='stylesheet'>
+</head>
+<body>
+<header>
+<a href='/'>
+VacuumBlog
+</a>
+<h1>How to Build a Google-like Search for Trademarks</h1>
+</header>
+
+<article>
+<footer class='post-footer'>
+<small>2021-05-19 15:09:32</small>
+<small>
+Reading time:
+5
+minutes
+</small>
+</footer>
+
+
+<p>Imagine you are starting a new business. You start with essentials: creating a brand, a website, and buying a fancy coffee machine. The business takes off, everything is fine, and business is booming. Competition is fierce, and it tries to imitate your brand. You open a bottle of good wine to celebrate the fact that your company is worth imitating. Then you think about how to fight the dirty competition. Your lawyer suggests that you should trademark your brand. But no! You find out that the name you&#8217;ve chosen cannot be trademarked. It&#8217;s game over, at least for this solution.</p>
+
+
+
+<p>Many business founders feel intimidated with buying a trademark, so they don&#8217;t do it soon enough. I have a lot of understanding for them: Buying a trademark can be a lengthy process with uncertain rules and results. It also costs a lot of money. Moreover, lawyers are involved, which makes it even more unpleasant and even more costly.&nbsp;</p>
+
+
+
+<p>These are the reasons why we&#8217;ve built Trama. With Trama, you&#8217;ll get the right amount of lawyers&#8217; support to do the trademark registration for you. We also provide a nice and quite unique feature: if your trademark registration is not successful, you don&#8217;t pay. In other words, the moment we say YourProductName can be trademarked, the financial responsibility is ours. If we&#8217;re wrong, it&#8217;ll hurt our purse. This means when we need to be damn sure about whether the registration will succeed. And since we register hundreds of trademarks each month, we need to be damn sure damn quickly.&nbsp;</p>
+
+
+
+<p>And this is precisely the moment when IT comes into play. What we need is one simple Google-like input, where a trademark attorney can input your trademark, and that&#8217;ll tell them what are the most similar existing trademarks that could interfere with your registration. But before we continue, let me make a quick intermezzo about how trademarks work.</p>
+
+
+
+<h2>Three rules of a trademark registration</h2>
+
+
+
+<p>First, your trademark cannot be similar—in writing or phonetically—to some already registered trademark. For this reason, you cannot register &#8220;Shelf&#8221; as a trademark for a chain of gas stations or &#8220;Nerd Face&#8221; as an outdoor clothing brand. The existing trademarks are like bullies in a high school: the bigger and more famous one is, the more distance you need to keep from it. If you break this rule, the owner of the established trademark can submit an opposition to your registration, which may result in your registration being dismissed.</p>
+
+
+
+<p>Second, meet trademark categories. Every trademark is registered in a certain category, and usually, there are no conflicts across categories. For this reason, you could register <a href="https://tramatm.com/" target="_blank" rel="noreferrer noopener">Trama</a> as a fashion brand, even though Trama is already a registered trademark in the Computer and Software Services and Scientific Services category. The simile with bullies applies here as well: Some trademarks are so powerful, they forbid similar names even in other categories. For this reason, you cannot register Adidas as a trademark for a seller of fresh vegetables.</p>
+
+
+
+<p>Third rule: If it&#8217;s a generally used term, you cannot trademark it. For this reason, Apple cannot be trademarked. However, its visual representation, the famous bitten apple, can be trademark-protected.</p>
+
+
+
+<p>Finally, let us amuse you with some real-world examples:</p>
+
+
+
+<ul><li>We wanted to register a trademark for VANAVITA, which a company with the trademark VITA opposed.</li><li>We wanted to register the trademark ELVIRE, which wanted registration in multiple categories, but specifically in the <em>clothing</em> category, it was opposed by a company called ELVINE.</li><li>We completed trademark registration for Eatster. Companies with the names Beatstar or Heatstar chose not to oppose the registration of that trademark.</li></ul>
+
+
+
+<h2>ML solution for the win</h2>
+
+
+
+<p>By now, you&#8217;re probably starting to understand why this is a complicated and fuzzy problem. And as such, it is a perfect fit for an ML solution. First, we need a proper dataset to train the model. There exists a beautiful set of successful and even unsuccessful trademark registration attempts. The problem? The really desperate registration attempts are not there, simply because an attorney hasn&#8217;t even submitted them. The ML approaches we&#8217;ve tried seemed to be quite confused by such a bias.</p>
+
+
+
+<p>The second problem was that Trama&#8217;s internal dataset was relatively small at the time of implementation, just a couple hundred trademarks, which made it unusable for actual model training. Well, they could at least use them later for validation of our model. So we decided that EUIPO data (a.k.a mapping from &#8216;text applied for a trademark&#8217; to a result of such application &#8216;approved/declined&#8217;) is our best shot.</p>
+
+
+
+<p>Of course, we need to do some preprocessing first. Data needs to be tokenized first: the trademarked strings are split into individual words. This is harder than it seems: sometimes the words are abbreviated, and sometimes they even come from different languages.</p>
+
+
+
+<p>The next step was to enrich our data with phrases that we know could not be trademarked, and such trademark applications would be declined. Wikipedia has a corpus of English language. If a part of the trademark can be found here, it&#8217;s a bad signal—trademark (or its part) is a word too common to be trademarked.&nbsp;</p>
+
+
+
+<p>Then we fed the data into elastic search to query for similar words, both syntactically and phonetically, as there may be some occurrence of leetspeak, for example. If there are many similarities found, then it is a bad sign, as well as there is a high chance of conflict with existing trademarks. Finally, all these inputs are inputs to the ML model. We&#8217;ve tried several models and finally went out with decision forests. We tried for our model not to fit the EUIPO data too much as we knew the data we were basing our decisions on were biased. For validation of the results, we were able to use our internal dataset.</p>
+
+
+
+<p>The result of the ML code is the yes/no verdict plus a list of trademarks that are most likely to conflict with the given trademark. The yes/no verdict is currently not that precise; if we&#8217;d trust them, we&#8217;d bleed money. The list of conflicts is a much more valuable output. A sharp eye of a skilled attorney can quickly check whether something of it is a valid reason to push back the registration.</p>
+
+
+
+<p>And that&#8217;s it. In Vacuumlabs, we focus more on deterministic problems than ML work. But still, I very much enjoyed this small project. It feels great to hop onto the completely unknown field (natural language processing and ML) and, within a few weeks, put together something that our attorneys can use to speed up their work. Even though the results are currently a bit hard to read, which is the main reason why we haven&#8217;t made this tool public yet. However, the Trama business is growing, and so is the demand for our tool&#8217;s accuracy—and I&#8217;m looking forward to deepening my skills in this area more when we&#8217;ll push it to the next level.</p>
+
+</article>
+
+<footer>
+<form>
+<input name='email' placeholder='Your email address' type='email'>
+<button>
+Subscribe
+</button>
+</form>
+
+<p>
+Created by Milan
+</p>
+</footer>
+
+</body>
+</html>

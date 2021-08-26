@@ -1,0 +1,16 @@
+%ul
+  - list[0...POSTS_PER_PAGE].each do |post|
+    %li
+      %h2
+        %a{:href=> "posts_html/#{post[:slug]}"}= post[:title]
+      = post[:excerpt]
+      = render 'post_footer', {:post => post}
+
+%div.pagination
+  - (1..pagination[:total]).each do |page|
+    %a{:href => "/"}
+      - if page == pagination[:active]
+        %strong= page
+      - else
+        = page
+-# = render 'pagination', {:active => pagination[:active], :total => pagination[:total]}

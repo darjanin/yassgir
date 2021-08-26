@@ -1,0 +1,170 @@
+<html lang='en'>
+<head>
+<meta charset='UTF-8'>
+<meta content='IE=edge' http-equiv='X-UA-Compatible'>
+<meta content='width=device-width, initial-scale=1.0' name='viewport'>
+<title>Strike: Disrupting the remittance payments via Bitcoin’s Lightning Network</title>
+<link href='/style.css' rel='stylesheet'>
+</head>
+<body>
+<header>
+<a href='/'>
+VacuumBlog
+</a>
+<h1>Strike: Disrupting the remittance payments via Bitcoin’s Lightning Network</h1>
+</header>
+
+<article>
+<footer class='post-footer'>
+<small>2021-05-25 08:51:28</small>
+<small>
+Reading time:
+7
+minutes
+</small>
+</footer>
+
+
+<p>Strike is a phenomenal application merging fintech and bleeding-edge Bitcoin tech. Strike&#8217;s remittance trial in El Salvador paves the way for the future of remittance payments, effectively driving the cost of sending cross-border payments to zero.</p>
+
+
+
+<h3><strong>Bitcoin the network and bitcoin the asset</strong></h3>
+
+
+
+<p>Bitcoin is usually perceived as the thing that goes up (or down) in price that people hold, speculate on, buy or sell. That&#8217;s bitcoin the asset &#8211; usually spelled with a lower case &#8220;b&#8221;. Bitcoin the asset is the most exciting aspect for most people, and its short-term volatility and long-term upwards trend is the gateway drug to the crypto space.</p>
+
+
+
+<p>But besides bitcoin the asset, we have Bitcoin the network &#8211; conventionally spelled with an upper case &#8220;B &#8220;. Bitcoin the network is often neglected and taken for granted as a simple enabler of bitcoin the asset. But Bitcoin, the network, has many exciting features on its own. Let&#8217;s take a look:</p>
+
+
+
+<ul><li>it is a global settlement network and knows no borders</li><li>there is no credit and no delayed settlement, as transactions are either unconfirmed or fully settled</li><li>it doesn&#8217;t require any identification of its participants (miners, account holders, transaction parties)</li><li>it is fully open-source and permissionless</li><li>it has no single point of failure and doesn&#8217;t fall under any single jurisdiction</li></ul>
+
+
+
+<p>These are major differences to any existing payment or settlement networks like Visa, PayPal, Swift, Fedwire, etc. Bitcoin as an open, permissionless, global network is positioned to ultimately dominate, as such networks do when competing with permission-walled gardens. It&#8217;s a similar story to how Linux ultimately won as a dominating operating system for mission-critical services (most servers today are<a href="https://w3techs.com/technologies/comparison/os-linux,os-windows" target="_blank" rel="noreferrer noopener"> running</a> on a Linux environment).</p>
+
+
+
+<p>But the settlement network by itself isn&#8217;t enough. As many know, transactions over the Bitcoin network can be slow and costly, especially in times of high transaction demand. That&#8217;s why a payment layer called the<a href="https://www.coincenter.org/education/key-concepts/lightning-network/" target="_blank" rel="noreferrer noopener"> Lightning Network</a> is being actively developed on top of Bitcoin. Lightning Network allows users to send bitcoin instantly and with almost zero cost. A $10 payment within Lightning Network arrives within a second, all over the world, and costs three satoshis (1 satoshi is 1/100,000,000 bitcoin), i.e., the cost is $0.0015 or 0.015%. And the good news is the transaction fees aren&#8217;t much higher in relative terms with higher volumes. For further explanation of the Lightning Network fee mechanics, see<a href="https://medium.com/suredbits/lightning-101-lightning-network-fees-86abbbc17024" target="_blank" rel="noreferrer noopener"> this blog post</a>.</p>
+
+
+
+<h3><strong>Strike</strong></h3>
+
+
+
+<p>Strike is a mobile application that cleverly combines the current financial system with Bitcoin&#8217;s Lightning Network capabilities. Strike&#8217;s founder Jack Mallers initially founded a Lightning-only wallet back in 2017. But he soon discovered the obstacle for the users to utilize Lightning transactions&#8217; tremendous potential fully: users have to use bitcoin the asset. Using bitcoin the asset for daily transactions is a problem for two reasons: the first one is bitcoin&#8217;s store of value capability is currently valued highly, and bitcoiners choose to hold bitcoin rather than transact with it. The second reason is the tax consequence: every bitcoin transaction is a taxable event.</p>
+
+
+
+<p>Mallers&#8217; solution to overcome both obstacles was to leverage Lightning Network capabilities without exposing users to bitcoin the asset (unless they choose to). So in the fall of 2019, Mallers came up with the idea that became Strike. The most fitting description of Strike is that it&#8217;s a <em>Bitcoin-native neo-bank </em>that allows users to send money instantly all around the world, with almost no cost. How is that possible?</p>
+
+
+
+<p>Under the hood, Strike works as follows:</p>
+
+
+
+<p>1) User connects his conventional bank account to the Strike app</p>
+
+
+
+<p>2) User initiates a transaction of $10 from the US to Europe, where the recipient would like to receive €8.2</p>
+
+
+
+<p>3) Strike debits the $10 from the sender&#8217;s bank account</p>
+
+
+
+<p>4) Strike converts the $10 to bitcoin on the Lightning Network</p>
+
+
+
+<p>5) Strike sends the bitcoin instantly via Lightning Network to its European branch (or partner institution)</p>
+
+
+
+<p>6) Strike converts the bitcoin to €8.2</p>
+
+
+
+<p>7) Recipient&#8217;s account on Strike is debited €8.2</p>
+
+
+
+<p>In the given example, neither the sender nor the recipient came into contact with bitcoin the asset. Still, they were utilizing Bitcoin the network (or rather the Lightning Network built on top of Bitcoin). There is no taxable event.</p>
+
+
+
+<p>The interesting part is how the USD gets converted to EUR. There is no Forex market involved. Instead, USD is first converted to bitcoin, and bitcoin is then converted to EUR. Since bitcoin has large liquidity in USD/BTC and EUR/BTC pairs, the resulting rate doesn&#8217;t deviate from the Forex rate. Bitcoin markets operate 24/7/365, and bitcoin has sufficient liquidity across dozens of currency pairs.</p>
+
+
+
+<blockquote class="wp-block-quote"><p><em>We now have an open monetary network that can physically settle any amount of value, at any time, to any place, at virtually no cost. Combine that with an application that allows you to utilize this open monetary network with your bank account, and you get monumental innovation and pure disruption.</em></p><p>-Jack Mallers,<a href="https://jimmymow.medium.com/announcing-strike-global-2392b908f611" target="_blank" rel="noreferrer noopener"> Announcing Strike Global</a></p></blockquote>
+
+
+
+<h3><strong>Disrupting the remittance market: El Salvador case study</strong></h3>
+
+
+
+<p>Strike was publicly launched at the beginning of 2020 and was initially available only to US users. The primary use case in the US was the ability to pay Lightning Network invoices with dollars and vice versa. This fiat-bitcoin payments interoperability proved that Mallers&#8217; vision is workable. So at the beginning of 2021, Mallers announced the intention to go fully global by the end of 2021. And as a surprise to some observers, Mallers chose to focus on developing markets and started to provide remittance services in El Salvador.</p>
+
+
+
+<p>El Salvador is a small country in Central America, officially dollarized since 2001 and heavily dependent on remittances, mainly from the US. Around 22% of El Salvador&#8217;s GDP comes from remittance payments. But as Mallers points out in a recent<a href="https://youtu.be/aY5M-er2ybU" target="_blank" rel="noreferrer noopener"> podcast</a>, a large part of those remittance payments gets siphoned off by financial institutions due to an unfortunate combination of the small size of a typical payment and a fixed cost of a cross-border transaction.</p>
+
+
+
+<p>Strike has been active in El Salvador since the beginning of April and reached <a href="https://twitter.com/JackMallers/status/1386432966843244545" target="_blank" rel="noreferrer noopener">#1 in installed apps within three weeks</a>. It seems reasonable to predict that Strike will significantly disrupt the way locals receive money from their relatives abroad. Compared to conventional remittance providers, Strike is instant, doesn&#8217;t cut on the payment, has no limits on minimum sent amount, and is mobile-native.</p>
+
+
+
+<p>Since the banking infrastructure in El Salvador isn&#8217;t as reliable as in the US, Strike allows recipients to hold USD stable coins in the app. The most popular one is currently USD Tether. There is already a well-functioning cryptocurrency community in El Salvador (one of the fast-growing local initiatives is <a href="https://www.coindesk.com/strike-launches-bitcoin-lightning-payment-app-in-el-salvador-full-eu-support-is-next" target="_blank" rel="noreferrer noopener">Bitcoin Beach</a>). There are many ATMs, merchants, P2P traders, and bitcoin meetups where Tethers can be exchanged for physical dollars or spent directly.</p>
+
+
+
+<p>What&#8217;s next for Strike after El Salvador? Strike has active beta testers in the Philippines, one of the largest remittance markets in the world. And there are many more countries to come &#8211; the best advantage of Strike is that it doesn&#8217;t have to build its infrastructure. Bitcoin and Lightning Network infrastructure is developing rapidly, and so are the markets for bitcoin the asset. So all that is necessary for expansion is a local marketing campaign and perhaps a partnership with a local banking provider &#8211; but even that may be unnecessary, as we can see in El Salvador, where the US dollar is substituted with a stable coin.</p>
+
+
+
+<blockquote class="wp-block-quote"><p><em>Today Strike launched in El Salvador. However, the real victory is Strike launching in an emerging market and providing financial tools to people that have lacked them for centuries. This is only possible because of<a href="https://twitter.com/hashtag/Bitcoin?src=hashtag_click" target="_blank" rel="noreferrer noopener"> #Bitcoin</a>. The power of an open monetary network on display.</em></p><p>-Jack Mallers,<a href="https://twitter.com/JackMallers/status/1377405359912968194" target="_blank" rel="noreferrer noopener"> Twitter</a></p></blockquote>
+
+
+
+<h3><strong>Strike charges no fees, so what&#8217;s the catch?</strong></h3>
+
+
+
+<p>There are no fees associated with Strike payments. For now, Strike is a traditional VC-backed (<a href="https://www.coindesk.com/lightning-startup-zap-raised-3-5m-for-bitcoin-app-ahead-of-visa-deal" target="_blank" rel="noreferrer noopener">$3.5m raise</a>) startup focused on rapid user growth. According to Mallers, Strike&#8217;s business model will leverage the large capacity of its Lightning payment channel. Institutional investors can leverage these channels to make lightning-fast arbitrage trades &#8211; something that isn&#8217;t possible today without depositing a lot of capital on multiple exchanges. Another possibility that Mallers mentioned previously is the payment for order flow, an approach similar to how<a href="https://www.investopedia.com/articles/active-trading/020515/how-robinhood-makes-money.asp" target="_blank" rel="noreferrer noopener"> Robinhood</a> makes money on its free brokerage service. Perhaps merchants will serve as a revenue stream through acquiring, as Strike&#8217;s costs are orders of magnitudes lower than card companies&#8217; due to eliminating chargeback risks.<a href="https://jimmymow.medium.com/announcing-cashback-by-strike-cce2829bc152" target="_blank" rel="noreferrer noopener"> Strike&#8217;s cashback</a> trial may also develop into a viable business model.</p>
+
+
+
+<p>Whether Strike finds a successful business model or not, it already served as a proof of concept: services merging fintech and Lightning Network are possible and very popular when introduced to communities where they make an enormous impact due to substantial cost savings. Similar projects are already emerging (<a href="https://lastbit.io/" target="_blank" rel="noreferrer noopener">Lastbit</a>).</p>
+
+
+
+<p>It will be exciting to watch Strike and similar startups come head to head with conventional remittance providers. One thing is for sure: the customer always wins when the industry is being radically disrupted through innovation.</p>
+
+</article>
+
+<footer>
+<form>
+<input name='email' placeholder='Your email address' type='email'>
+<button>
+Subscribe
+</button>
+</form>
+
+<p>
+Created by Milan
+</p>
+</footer>
+
+</body>
+</html>
