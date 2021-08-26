@@ -85,3 +85,4 @@ end
 puts("MAIN: Rebuild.")
 generate_index(list)
 generate_posts_page(list)
+# generate_markdown_for_posts(list)
