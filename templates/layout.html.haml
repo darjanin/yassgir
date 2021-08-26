@@ -4,7 +4,10 @@
     %meta{:"http-equiv" => "X-UA-Compatible", :content=>"IE=edge"}
     %meta{:name=>"viewport", :content=>"width=device-width, initial-scale=1.0"}
     %title= title
+    -# Load styles in the development
     %link{:href => "/style.css", :rel => "stylesheet"}
+    -# Load styles in the production on github pages
+    %link{:href => "/yassgir/style.css", :rel => "stylesheet"}
   %body
     = render 'header', {:title => title}
     = html
