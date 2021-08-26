@@ -1,0 +1,70 @@
+<html lang='en'>
+<head>
+<meta charset='UTF-8'>
+<meta content='IE=edge' http-equiv='X-UA-Compatible'>
+<meta content='width=device-width, initial-scale=1.0' name='viewport'>
+<title>Introducing project AdaLite, a Cardano in-browser wallet</title>
+<link href='/style.css' rel='stylesheet'>
+<link href='/yassgir/style.css' rel='stylesheet'>
+</head>
+<body>
+<header>
+<a href='/'>
+VacuumBlog
+</a>
+<h1>Introducing project AdaLite, a Cardano in-browser wallet</h1>
+</header>
+
+<article>
+<footer class='post-footer'>
+<small>2019-10-10 16:18:21</small>
+<small>
+Reading time:
+3
+minutes
+</small>
+</footer>
+
+
+<p>The community around Cardano platform has been crying for many months for a more convenient way to interact with the Cardano blockchain: to store and transfer Cardano’s ADA <a href="https://inside.vacuumlabs.com/category/crypto">cryptocurrency</a>. Before AdaLite, the only option was the official Daedalus heavy wallet. It’s inconvenient to install because it requires to download and synchronise a copy of blockchain initially and during each startup. <br><br>In 2018, we at Vacuumlabs, as big fans and holders of Cardano cryptocurrency, have decided to help the Cardano ecosystem by developing a light, secure multi-platform wallet that users can access easily with a web-browser without the need to download anything. <br><br>Our inspiration for this project was a favourite Ethereum web-based wallet MyEtherWallet. We code-named the project CardanoLite but later renamed it to AdaLite to better reflect the currency for the wallet.<br><br>Early in the project, we encountered many difficulties arising from the fact that Cardano was still a young project and it missed more in-depth technical specification and documentation. To proceed with our project, we had to reverse engineer Daedalus.<br><br>Initially, we decided to provide 2 types of access to the wallet by seed phrase and encrypted .JSON. Both these accesses are insecure because they require the handling of sensitive data in an insecure way and are vulnerable to different types of potential attacks. They also require that the user trusts that AdaLite website won’t steal their sensitive data. <br><br>Therefore, from the beginning, we developed the wallet keeping in mind that our product is complete and acceptable for users only once we provide the possibility of trustless secure access through a trusted hardware wallet.</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter"><img src="https://vacuumlabs.com/wp-content/uploads/2019/10/content_1-3-1024x532.jpg" alt="Adalite mockup" class="wp-image-565"/></figure></div>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter"><img loading="lazy" width="1024" height="532" src="https://vacuumlabs.com/wp-content/uploads/2019/10/content_2-5-1024x532.jpg" alt="Adalite mockup" class="wp-image-566" srcset="https://vacuumlabs.com/wp-content/uploads/2019/10/content_2-5-1024x532.jpg 1024w, https://vacuumlabs.com/wp-content/uploads/2019/10/content_2-5-300x156.jpg 300w, https://vacuumlabs.com/wp-content/uploads/2019/10/content_2-5-768x399.jpg 768w, https://vacuumlabs.com/wp-content/uploads/2019/10/content_2-5.jpg 1248w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure></div>
+
+
+
+<p>We are happy that we managed to achieve this and together with Trezor we provide the Cardano community with a new secure way to manage their ADA cryptocurrency. <br><br>This way, the user always stores their private key on the Trezor hardware wallet. It isn’t necessary for the user to trust us when accessing their wallet through AdaLite website.<br><br>You can use the wallet on any browser and operating system without the need to download anything. It takes just a few seconds to generate new or access an existing wallet, and it is straightforward to use. We don’t store any sensitive data about you, and your private key never leaves your computer, the signing of transactions completes in your browser (or, in case you are using Trezor, they complete it on their end). <br><br>On top of it, AdaLite works with smartphones so you can access your funds from anywhere anytime. As far as we know, we are the only mobile friendly wallet currently on the market.<br><br>AdaLite wallet currently has one limitation compared to Daedalus. It is limited to 10 pre-defined (sequentially derived) addresses per wallet. This implementation implies that wallets created on Daedalus client won’t correctly work on AdaLite. <br><br>The reason is that after each transaction, Daedalus randomly derives new address, therefore when checking for wallet balance, Daedalus scans the whole blockchain for possible addresses that belong to given wallet’s private key. Mimicking it would be complicated to do for multiple users on a server every time they try to access their wallet. <br><br>Therefore, we decided for this limitation as we believe most of the users are fine with a single address per wallet (and we provide them with 9 extra, should they need more). Imported Daedalus wallets do work, but will most likely show 0 balance (as we aren’t monitoring the randomly generated addresses), unless you are keeping your funds on the first address that was generated by Daedalus that is identical with first AdaLite address. It is worth to note that AdaLite wallets are fully compatible and you can import them to Daedalus.<br><br>We don’t want to stop with just Trezor integration. We have some bold plans. We want to integrate with Nano Ledger once it supports Cardano. We plan to maintain compatibility and interoperability with all future official Cardano releases. This way we can guarantee a possibility to fall back to the official wallet for any reason. We also want to support interaction with smart contracts once released and provide an interface for staking delegation and much more. Right now, we are listening to the community and working to implement features deemed most useful.</p>
+
+
+<p>[related_article]</p>
+
+
+
+<figure class="wp-block-image"><img src="https://vacuumlabs.com/wp-content/uploads/2019/10/mockup_ledger@2x-1296x791.jpg" alt="Ledger Adalite Wallet" class="wp-image-567"/></figure>
+
+
+
+<p>Code for AdaLite wallet is publicly auditable and easy to review on GitHub. This project is developed by Vacuumlabs, a centre of excellence for digital design and engineering.<br><br>Follow us on our <a href="https://twitter.com/vacuumlabs">Twitter</a> or join our Telegram channel to be notified when the new Trezor firmware is released.</p>
+
+</article>
+
+<footer>
+<form>
+<input name='email' placeholder='Your email address' type='email'>
+<button>
+Subscribe
+</button>
+</form>
+
+<p>
+Created by Milan
+</p>
+</footer>
+
+</body>
+</html>

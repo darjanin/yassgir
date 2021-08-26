@@ -5,6 +5,8 @@ require 'nokogiri'
 require 'haml'
 require 'fileutils'
 
+BUILD = 'docs'
+MARKDOWN = 'markdown'
 TEMPLATES = 'templates'
 POSTS_PER_PAGE = 5
 
@@ -43,14 +45,14 @@ def generate_index(list)
     :active => 1,
     :total => list.count / POSTS_PER_PAGE
   }
-  save_html('index.html', html_wrap(render('posts', {:list => list, :pagination => pagination})))
+  save_html("#{BUILD}/index.html", html_wrap(render('posts', {:list => list, :pagination => pagination})))
 end
 
 def generate_posts_page(list)
   list.each do |post|
-    directory = "posts_html/#{post[:slug]}"
+    directory = "#{BUILD}/post/#{post[:slug]}"
     FileUtils.mkdir(directory) unless File.directory?(directory)
-    save_html("posts_html/#{post[:slug]}/index.html", html_wrap(render('post_detail', post), post[:title]))
+    save_html("#{BUILD}/post/#{post[:slug]}/index.html", html_wrap(render('post_detail', post), post[:title]))
   end
 end
 
@@ -63,7 +65,7 @@ end
 def generate_markdown_for_posts(list)
   list.each do |post| 
     File.write(
-      "posts/#{post[:slug]}.md",
+      "#{MARKDOWN}/#{post[:slug]}.md",
       [
         [
           "---",
