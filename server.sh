@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
-ruby -run -ehttpd . -p8000 docs/
+cd docs/
+ruby -run -ehttpd . -p8000

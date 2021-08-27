@@ -4,6 +4,7 @@ require 'reverse_markdown'
 require 'nokogiri'
 require 'haml'
 require 'fileutils'
+require 'colorize'
 
 BUILD = 'docs'
 MARKDOWN = 'markdown'
@@ -41,11 +42,13 @@ def html_wrap(html, title = "VacuumBlog")
 end
 
 def generate_index(list)
-  pagination = {
-    :active => 1,
-    :total => list.count / POSTS_PER_PAGE
-  }
-  save_html("#{BUILD}/index.html", html_wrap(render('posts', {:list => list, :pagination => pagination})))
+  total = list.count / POSTS_PER_PAGE
+  (1..total).each do |page|
+    directory = "#{BUILD}/#{page}"
+    FileUtils.mkdir(directory) unless File.directory?(directory)
+    save_html("#{BUILD}/#{page}/index.html", html_wrap(render('posts', {:list => list[(POSTS_PER_PAGE * page - POSTS_PER_PAGE)...(page * POSTS_PER_PAGE)], :pagination => {:active => page, :total => total}})))  
+  end
+  save_html("#{BUILD}/index.html", html_wrap(render('posts', {:list => list, :pagination => {:active => 1, :total => total}})))
 end
 
 def generate_posts_page(list)
@@ -82,7 +85,7 @@ def generate_markdown_for_posts(list)
   end
 end
 
-puts("MAIN: Rebuild.")
+puts("main: " + "Rebuild.".green)
 generate_index(list)
 generate_posts_page(list)
 # generate_markdown_for_posts(list)
