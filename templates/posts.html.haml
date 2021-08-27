@@ -2,7 +2,7 @@
   - list.each do |post|
     %li
       %h2
-        %a{:href=> "posts_html/#{post[:slug]}"}= post[:title]
+        %a{:href=> "post/#{post[:slug]}"}= post[:title]
       = post[:excerpt]
       = render 'post_footer', {:post => post}
 
