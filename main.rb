@@ -33,6 +33,10 @@ def save_html(filename, html)
   File.write(filename, html)
 end
 
+def get_domain
+  DOMAIN
+end
+
 def render(template_name, locals = {})
   template = File.read("#{TEMPLATES}/#{template_name}.html.haml")
   Haml::Engine.new(template).render(self, locals)
@@ -49,7 +53,7 @@ def generate_index(list)
     FileUtils.mkdir(directory) unless File.directory?(directory)
     save_html("#{BUILD}/#{page}/index.html", html_wrap(render('posts', {:list => list[(POSTS_PER_PAGE * page - POSTS_PER_PAGE)...(page * POSTS_PER_PAGE)], :pagination => {:active => page, :total => total}})))  
   end
-  save_html("#{BUILD}/index.html", html_wrap(render('posts', {:list => list, :pagination => {:active => 1, :total => total}})))
+  save_html("#{BUILD}/index.html", html_wrap(render('posts', {:list => list[(POSTS_PER_PAGE * 1 - POSTS_PER_PAGE)...(1 * POSTS_PER_PAGE)], :pagination => {:active => 1, :total => total}})))  
 end
 
 def generate_post_pages(list)
@@ -87,6 +91,7 @@ def generate_markdown_for_posts(list)
 end
 
 puts("main: " + "Rebuild.".green)
-# generate_index(list)
+puts("main: " + "DOMAIN: " + DOMAIN.green)
+generate_index(list)
 generate_post_pages(list)
 generate_markdown_for_posts(list)
