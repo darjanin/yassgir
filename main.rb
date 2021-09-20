@@ -1,13 +1,11 @@
 #!/usr/bin/env ruby
 require 'json'
-require 'reverse_markdown'
 require 'nokogiri'
 require 'haml'
 require 'fileutils'
 require 'colorize'
 
 BUILD = 'docs'
-MARKDOWN = 'markdown'
 TEMPLATES = 'templates'
 POSTS_PER_PAGE = 5
 DOMAIN = if ARGV.count == 1 then ARGV[0] else "/" end
@@ -70,28 +68,7 @@ def reading_time(post, words_per_minute = 150)
 end
 
 
-def generate_markdown_for_posts(list)
-  list.each do |post| 
-    File.write(
-      "#{MARKDOWN}/#{post[:slug]}.md",
-      [
-        [
-          "---",
-          "title: #{post[:title]}",
-          "excerpt: #{Nokogiri::HTML(post[:excerpt]).text.strip}",
-          "date: #{post[:date]}",
-          "slug: #{post[:slug]}",
-          "---"
-        ].join("\n"),
-        "# #{post[:title]}",
-        ReverseMarkdown.convert(post[:content])
-      ].join("\n\n")
-    )
-  end
-end
-
 puts("main: " + "Rebuild.".green)
 puts("main: " + "DOMAIN: " + DOMAIN.green)
 generate_index(list)
 generate_post_pages(list)
-generate_markdown_for_posts(list)
