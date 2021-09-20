@@ -10,6 +10,7 @@ BUILD = 'docs'
 MARKDOWN = 'markdown'
 TEMPLATES = 'templates'
 POSTS_PER_PAGE = 5
+DOMAIN = if ARGV.count == 1 then ARGV[0] else "/" end
 
 file1 = File.read('./posts_page_1.json')
 file2 = File.read('./posts_page_2.json')
@@ -51,7 +52,7 @@ def generate_index(list)
   save_html("#{BUILD}/index.html", html_wrap(render('posts', {:list => list, :pagination => {:active => 1, :total => total}})))
 end
 
-def generate_posts_page(list)
+def generate_post_pages(list)
   list.each do |post|
     directory = "#{BUILD}/post/#{post[:slug]}"
     FileUtils.mkdir(directory) unless File.directory?(directory)
@@ -86,6 +87,6 @@ def generate_markdown_for_posts(list)
 end
 
 puts("main: " + "Rebuild.".green)
-generate_index(list)
-generate_posts_page(list)
-# generate_markdown_for_posts(list)
+# generate_index(list)
+generate_post_pages(list)
+generate_markdown_for_posts(list)
