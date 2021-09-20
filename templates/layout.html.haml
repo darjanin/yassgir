@@ -6,8 +6,6 @@
     %title= title
     %link{:href => "#{DOMAIN}style.css", :rel => "stylesheet"}
   %body
-    = get_domain
-    Hello
     = render 'header', {:title => title}
     = html
     = render 'footer/footer'
