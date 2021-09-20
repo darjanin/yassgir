@@ -38,6 +38,6 @@ jobs:
         timestamp=$(date +'%Y-%m-%dT%H:%M:%S')
         git config user.name Github Actions
         git config user.email actions@github.com
-        git add .
+        git add docs/*
         git commit -m "Rebuild production at $timestamp"
         git push
