@@ -2,13 +2,12 @@
   - list.each do |post|
     %li
       %h2
-        %a{:href=> "#{DOMAIN}post/#{post[:slug]}"}= post[:title]
+        %a{:href => "#{Y::DOMAIN}post/#{post[:slug]}"}= post[:title]
       = post[:excerpt]
-      = render 'post_footer', {:post => post}
-
-%div.pagination
+      = Y::render 'post_footer', {:post => post}
+.pagination
   - (1..pagination[:total]).each do |page|
-    %a{:href => "#{DOMAIN}#{page}"}
+    %a{:href => "#{Y::DOMAIN}#{page}"}
       - if page == pagination[:active]
         %strong= page
       - else
