@@ -2,7 +2,7 @@
 require 'listen'
 require 'colorize'
 
-watch_patterns = %w(html.haml .rb .md)
+watch_patterns = %w(html.haml .rb .md .css)
 
 listener = Listen.to('./') do |modified, added, removed|
   has_modified_file = modified.any? do |path|
