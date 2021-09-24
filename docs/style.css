@@ -7,7 +7,7 @@
 @media (prefers-color-scheme: light) {
   :root {
     --background-color: #fff;
-    --text-color: #0d1117;
+    --text-color: #484b4f;
     --link-color: #8e5dc4;
   }
 }
@@ -27,6 +27,10 @@ h1 {
 
 p {
   line-height: 1.6;
+  font-size: 110%;
+  -webkit-hyphens: auto;
+  text-align: justify;
+
 }
 
 a {
@@ -103,4 +107,62 @@ h3 a {
 
 .pagination a + a {
   margin-left: 0.5rem;
+}
+
+img {
+    transition:transform .3s;
+}
+img:hover {
+
+transform:scale(1.5);
+}
+
+html, body {
+	font: 18px/1.6 'Helvetica';
+}
+
+h1, h2, h3, h4 {
+	font-weight: normal;
+}
+
+h1 {
+	font-size: 2.44em;
+	line-height: 1.33em;
+	padding-top: 0.333em;
+	margin-bottom: 0.333em;
+}
+
+h2 {
+	font-size: 1.94em;
+	line-height: 1.68em;
+	padding-top: 0.484em;
+	margin-bottom: 0.355em;
+}
+
+h3 {
+	font-size: 1.56em;
+	line-height: 1.04em;
+	padding-top: 0.200em;
+	margin-bottom: 0.840em;
+}
+
+h4 {
+	font-size: 1.25em;
+	line-height: 1.30em;
+	padding-top: 0.300em;
+	margin-bottom: 1.00em;
+}
+
+p,
+figcaption,
+.post-footer {
+	font-size: 1.00em;
+	line-height: 1.63em;
+	padding-top: 0.500em;
+	margin-bottom: 1.13em;
+    font-weight: 300;
+}
+
+iframe {
+    height: auto;
 }
