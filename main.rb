@@ -7,7 +7,7 @@ require 'colorize'
 
 BUILD = 'docs'
 TEMPLATES = 'templates'
-POSTS_PER_PAGE = 5
+POSTS_PER_PAGE = 12
 DOMAIN = if ARGV.count == 1 then ARGV[0] else "/" end
 
 file1 = File.read('./posts_page_1.json')
@@ -20,9 +20,11 @@ list = (posts1 + posts2).map do |post|
     :date => post['date'],
     :slug => post['slug'],
     :link => post['link'],
-    :excerpt => post['excerpt']['rendered'],
+    # remove the html tags from it
+    :excerpt => post['excerpt']['rendered'].gsub(%r{</?[^>]+?>}, ''),
     :content => post['content']['rendered'],
-    :author => post['author']
+    :author => post['author'],
+    :preview_image => post['jetpack_featured_media_url']
   }
 end
 # p posts1[0]['link']

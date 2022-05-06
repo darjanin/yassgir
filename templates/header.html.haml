@@ -2,7 +2,9 @@
   - if title != "VacuumBlog"
     %a{:href => DOMAIN}
       VacuumBlog
-    %h1= title
+    %h1.text-lg.font-semibold= title
   - else
-    %h1
+    %h1.text-4xl.font-bold.text-gray-900.mb-4.text-center
       %a{:href => DOMAIN}= title
+    .text-lg.text-gray-600.tracking-wide.font-light.max-w-2xl.text-center.mb-10
+      We are stoked that you have decided to take a look inside our Vacuumlabs pot of culture, wisdom, and artistry. This blog is designed to lead you on a journey through some truly exciting stuff that we do here.</p>

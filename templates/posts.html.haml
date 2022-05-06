@@ -1,10 +1,17 @@
-%ul
+%ul.grid.grid-cols-1.md:grid-cols-2.lg:grid-cols-3.xl:grid-cols-4.px-6.w-full.max-w-8xl.gap-6
   - list.each do |post|
-    %li
-      %h2
-        %a{:href=> "#{DOMAIN}post/#{post[:slug]}"}= post[:title]
-      = post[:excerpt]
-      = render 'post_footer', {:post => post}
+    %li.relative.bg-white.shadow-xl.hover:shadow-2xl.transition-shadow.duration-300.ring-1.sm:mx-auto.sm:max-w-lg.sm:rounded-lg.overflow-clip.flex.flex-col{:class => "ring-gray-900/5"}
+      .h-48.w-full.overflow-hidden
+        %img.min-w-full.min-h-full.object-cover{:src => "#{post[:preview_image]}"}/
+      .p-5.flex.flex-col.flex-1
+        -# %p.mb-1
+        -#   %a.text-pink-500.hover:underline.text-sm.font-semibold{:href => ""} Article · Dev · Opinion
+        %h2.mb-4
+          %a.text-xl.font-semibold.leading-snug.hover:underline{:href=> "#{DOMAIN}post/#{post[:slug]}"}= post[:title]
+        %p.text-gray-500.text-base.mb-6.whitespace-normal= post[:excerpt]
+        = render 'post_footer', {:post => post}
+      
+      
 
 %div.pagination
   - (1..pagination[:total]).each do |page|

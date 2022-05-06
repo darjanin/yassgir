@@ -1,6 +1,12 @@
-%footer.post-footer
-  %small= post[:date].split('T').join(" ")
-  %small
-    Reading time:
-    = reading_time post, 200
-    minutes
+-# %footer.post-footer
+-#   %small= post[:date].split('T').join(" ")
+-#   %small
+-#     Reading time:
+-#     = reading_time post, 200
+-#     minutes
+.mt-auto.flex.items-center
+  %div.w-10.h-10.bg-pink-400.rounded-full.mr-3{:src => ""}
+  %div
+    %p.font-medium
+      %a.hover:underline{:href => ""} Jonathan Wilson
+    %p.text-gray-500.text-sm #{post[:date].split('T')[0]} · #{reading_time post, 200} min read
